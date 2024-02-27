@@ -1,0 +1,18 @@
+<!-- courses_history.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <center><h1 class="mt-5" style="color: #E4CE39;font-size: 30px;">My Courses History</h1>
+    <ul>
+        {% for course in completed_courses %}
+        <div class="mt-5">
+            <img src="{{ course.image.url }}" width="200" height="400" loading="lazy" alt="Course Image" class="w-100" style="object-fit: fill;">
+           
+        </div>
+            <li style="color: white;font-size: 25;">
+                <h1>{{ course.name }}</h1>
+                <h1>{{ course.end_date }}</h1>
+            </li>
+        {% endfor %}
+    </ul></center>
+    {% endblock content %}

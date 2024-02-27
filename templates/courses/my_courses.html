@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if enrolled_courses %}
+<center>
+<span class="mt-5" style="color: white">My Enrolled Courses</span>
+<span><a class="dropdown-item" href="{% url 'courses_history' %}">Courses History</a></span>
+<ul>
+        {% for enrollment in enrolled_courses %}
+        
+            
+        
+            <li style="color: white;font-size: 30px;">
+                <div class="mt-5">
+                    <div>
+                        <img src="{{ enrollment.course.image.url }}" width="200" height="400" loading="lazy" alt="Course Image" class="w-100" style="object-fit: fill;">
+                       
+                    </div>
+               <h3> {{ enrollment.course.name }}</h3>
+                <form method="post" action="{% url 'leave_course' enrollment.course.id %}">
+                    {% csrf_token %}
+                    <button class="btn mt-3" type="submit" style="background-color: #E4CE39;color: white;">Leave Course</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</center>
+{% elif teacher_courses %}
+    <!-- Display courses taught by the teacher -->
+    {% for course in teacher_courses %}
+        <!-- Display teacher's courses -->
+        <center><h1 class="mt-5" style="color: white">Courses Taught by You</h1>
+        <div class="mt-5">
+            <div>
+                <img src="{{ course.image.url }}" width="200" height="400" loading="lazy" alt="Course Image" class="w-100" style="object-fit: fill;">
+               
+            </div>
+  
+            <div class="wrapper">
+                <h2 class="category mt-2" style="color: white; font-size: 40px; font-weight: bold; display: block;">{{ course.name }}</h2>
+            </div>
+  
+            <div class="price-wrapper">
+                <h2 class="price-text" style="color: #E4CE39;">Instructor: <span style="color: white;">{{ course.teacher }}</span></h2>
+            </div>
+            <div class="price-wrapper">
+                <h2 class="price-text" style="color: #E4CE39;">Duration: <span style="color: white;">{{ course.start_date|date:"M d, Y" }} - {{ course.end_date|date:"M d, Y" }}</span></h2>
+            </div>
+        </div>
+        <h2 class="mt-4" style="color: #E4CE39; font-size: 40px; font-weight: bold;">Enrolled Students:</h2>
+        <ul>
+            {% for student in course.enrollments.all %}
+                <li style="color: white;font-size: 30px;">{{ student.student.username }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endif %}
+</center>
+{% endblock content %}
