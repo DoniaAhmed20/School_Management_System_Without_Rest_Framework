@@ -17,12 +17,12 @@ School Management System
     cd School_Management_System_Without_Rest_Framework
   </pre>
 
-- **Create a Virtual Environment **
+- **Create a Virtual Environment**
   <pre>
     python -m venv venv
   </pre>
 
-- **Activate the Virtual Environment **
+- **Activate the Virtual Environment**
   <pre>
     venv\Scripts\activate
   </pre>
@@ -30,19 +30,20 @@ School Management System
 - **INSTALL DJANGO**
   <pre>
     pip install django
+    python -m pip install Pillow
   </pre>
 
-  - **Create a Superuser (for accessing the Django Admin)**
+- **Create a Superuser (for accessing the Django Admin)**
   <pre>
     python manage.py createsuperuser
   </pre>
 
-  <h4>Apply Migrations</h4>
+- **Apply Migrations**
   <pre>
     python manage.py makemigrations
   </pre>
 
-  <h4>Apply Migrations</h4>
+- **Apply Migrations**
   <pre>
     python manage.py migrate
   </pre>
