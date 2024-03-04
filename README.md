@@ -33,11 +33,6 @@ School Management System
     python -m pip install Pillow
   </pre>
 
-- **Create a Superuser (for accessing the Django Admin)**
-  <pre>
-    python manage.py createsuperuser
-  </pre>
-
 - **Apply Migrations**
   <pre>
     python manage.py makemigrations
@@ -53,6 +48,9 @@ School Management System
   <pre>
     python manage.py runserver 
   </pre>
+
+  -**NOTE**
+   <h4>to access admin panel should comment the line <h1>AUTH_USER_MODEL = 'users.User'</h1> in settings.py file</h4>
 
   
 <h4>Open your web browser and navigate to ` http://127.0.0.1:8000/` to access the Threads & Beads website.</h4><br>
