@@ -17,6 +17,7 @@ def register_view(request):
     if request.method == 'POST':
         # Extract form data
         username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
         email = request.POST.get('email')
         password = request.POST.get('password')
         user_type = request.POST.get('user_type')
@@ -27,6 +28,7 @@ def register_view(request):
 
         # Create user object
         user = User.objects.create_user(
+            first_name = first_name,
             username=username,
             email=email,
             password=password,
@@ -61,7 +63,7 @@ def register_view(request):
         admin_panel_url = reverse('admin:index')
 
         # Render success page with admin panel link
-        return render(request, 'home.html', {'admin_panel_url': admin_panel_url})
+        return redirect('home')
 
     # Render registration form template for GET requests
     return render(request, 'register.html')
