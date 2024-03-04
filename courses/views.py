@@ -44,7 +44,7 @@ def enroll_course(request, course_id):
     
     return redirect('home')
 
-@login_required
+# @login_required
 def my_courses(request):
     user = request.user
     if user.is_authenticated:
