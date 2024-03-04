@@ -104,6 +104,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'users.user_middleware.SetAuthUserModelMiddleware',
     'authentication.middleware.AdminAuthenticationMiddleware',
+    'users.user_middleware.LoginRequiredMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -151,7 +152,7 @@ ADMIN_EMAIL = '09doniaahmed01@gmail.com'  # Replace 'admin@example.com' with you
 
 
 
-
+# to run admin panel should comment this line
 AUTH_USER_MODEL = 'users.User'
 # AUTH_USER_MODEL = 'auth.User'  # Keep the built-in user model for admin purposes
 
